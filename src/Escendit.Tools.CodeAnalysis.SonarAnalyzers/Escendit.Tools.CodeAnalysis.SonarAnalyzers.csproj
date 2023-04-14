@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <DevelopmentDependency>true</DevelopmentDependency>
+        <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+        <NoWarn>$(NoWarn);NU5128</NoWarn>
+        <IsPackable>true</IsPackable>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <Description>Enforce our coding practices in your projects with our NuGet package's default settings for Sonar Analyzers.</Description>
+        <PackageTags>analyzers;sonar;defaults</PackageTags>
+    </PropertyGroup>
+    <ItemGroup>
+        <!-- TFM -->
+        <None Pack="true" PackagePath="build" Include="Escendit.Tools.CodeAnalysis.SonarAnalyzers.props" />
+        <None Pack="true" PackagePath="build" Include="Escendit.Tools.CodeAnalysis.SonarAnalyzers.targets" />
+        <!-- TFMs -->
+        <None Pack="true" PackagePath="buildMultiTargeting" Include="Escendit.Tools.CodeAnalysis.SonarAnalyzers.props" />
+        <None Pack="true" PackagePath="buildMultiTargeting" Include="Escendit.Tools.CodeAnalysis.SonarAnalyzers.targets" />
+        <!-- Transitive -->
+        <None Pack="true" PackagePath="buildTransitive" Include="Escendit.Tools.CodeAnalysis.SonarAnalyzers.props" />
+        <None Pack="true" PackagePath="buildTransitive" Include="Escendit.Tools.CodeAnalysis.SonarAnalyzers.targets" />
+        <!-- Assets -->
+        <None Pack="true" PackagePath="" Include="Escendit.Tools.CodeAnalysis.SonarAnalyzers.globalconfig" />
+        <!-- README -->
+        <None Pack="true" PackagePath="" Include="$(SolutionDir)/README.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.55.0.65544">
+            <PrivateAssets>runtime; build; native; contentfiles</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>
